@@ -39,7 +39,17 @@ public:
 	TArray<UActorComponent*> InitializableComponents = GetComponentsByInterface(UInitializableInterface::StaticClass()); \
 	for (auto& Component : InitializableComponents) \
 	{ \
+		if (!Component->Implements<UDataDrivenComponentInterface>()) \
+		{ \
+			IDataDrivenComponentInterface::Execute_IRegisterDataContainerComponent(Component, DataContainerComponent); \
+		} \
 		IInitializableInterface::Execute_IFinishInitialization(Component); \
-		if (!Component->Implements<UDataDrivenComponentInterface>()) continue; \
+	}
+
+#define REGISTER_DATA_CONTAINER() \
+	DataContainerComponent->RegisterDataContainer(DataContainer); \
+	TArray<UActorComponent*> DataDrivenComponents = GetComponentsByInterface(UDataDrivenComponentInterface::StaticClass()); \
+	for(auto& Component : DataDrivenComponents) \
+	{ \
 		IDataDrivenComponentInterface::Execute_IRegisterDataContainerComponent(Component, DataContainerComponent); \
 	}

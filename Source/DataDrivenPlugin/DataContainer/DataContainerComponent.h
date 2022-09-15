@@ -25,13 +25,12 @@ public:
 	template<class T>
 	T* GetDataPiece()
 	{
-		if(DataContainer) return nullptr;
+		if(!DataContainer) return nullptr;
 		UObject* DataPiece = DataContainer->GetDataPiece(T::StaticClass());
 		if (!IsValid(DataPiece)) return nullptr;
 		return Cast<T>(DataPiece);
 	}
 	
-private:
 	UPROPERTY()
 	UDataContainer* DataContainer = nullptr;
 };

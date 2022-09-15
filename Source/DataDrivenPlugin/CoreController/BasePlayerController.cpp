@@ -4,7 +4,7 @@
 #include "BasePlayerController.h"
 
 #include "Components/Interfaces/ControllerComponentInterface.h"
-
+#include "Components/Interfaces/SetupInputInterface.h"
 
 // Sets default values
 ABasePlayerController::ABasePlayerController()
@@ -41,4 +41,9 @@ void ABasePlayerController::OnUnPossess()
 void ABasePlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
+	TArray<UActorComponent*> SetupInputComponents = GetComponentsByInterface(USetupInputInterface::StaticClass());
+	for (auto& Component : SetupInputComponents)
+	{
+		ISetupInputInterface::Execute_ISetupInputComponent(Component, InputComponent);
+	}
 }
