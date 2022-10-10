@@ -20,3 +20,9 @@ void ADataDrivenActor::BeginPlay()
 	DataContainerComponent->RegisterDataContainer(DataContainer);
 	INITIALIZE_COMPONENTS(DataContainerComponent)
 }
+
+void ADataDrivenActor::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	REGISTER_DATA_CONTAINER()
+}

@@ -1,23 +1,24 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "ControllerComponent.h"
+#include "DataDrivenControllerComponent.h"
 
 
 // Sets default values for this component's properties
-UControllerComponent::UControllerComponent()
+UDataDrivenControllerComponent::UDataDrivenControllerComponent()
 {
 
 }
 
-void UControllerComponent::IOnPossesPawn_Implementation(APawn* NewPawn)
+void UDataDrivenControllerComponent::IOnPossesPawn_Implementation(APawn* NewPawn)
 {
 	IControllerComponentInterface::IOnPossesPawn_Implementation(NewPawn);
 	ControlledPawn = NewPawn;
 }
 
-void UControllerComponent::IOnUnPossesPawn_Implementation()
+void UDataDrivenControllerComponent::IOnUnPossesPawn_Implementation()
 {
 	IControllerComponentInterface::IOnUnPossesPawn_Implementation();
 	ControlledPawn = nullptr;
 }
+

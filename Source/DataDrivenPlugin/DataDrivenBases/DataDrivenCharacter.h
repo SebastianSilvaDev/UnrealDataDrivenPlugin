@@ -23,6 +23,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void PostInitializeComponents() override;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UDataContainerComponent* DataContainerComponent = nullptr;
 	

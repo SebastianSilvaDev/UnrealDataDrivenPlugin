@@ -22,3 +22,9 @@ void ADataDrivenCharacter::BeginPlay()
 	INITIALIZE_COMPONENTS(DataContainerComponent)
 }
 
+void ADataDrivenCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	REGISTER_DATA_CONTAINER()
+}
+

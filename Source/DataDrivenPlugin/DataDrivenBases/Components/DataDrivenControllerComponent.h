@@ -4,18 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "Interfaces/ControllerComponentInterface.h"
-#include "ControllerComponent.generated.h"
+#include "DataDrivenPlugin/CoreController/Components/Interfaces/ControllerComponentInterface.h"
+#include "DataDrivenPlugin/DataContainer/DataDrivenInitializableComponent.h"
+#include "DataDrivenControllerComponent.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class DATADRIVENPLUGIN_API UControllerComponent : public UActorComponent, public IControllerComponentInterface
+class DATADRIVENPLUGIN_API UDataDrivenControllerComponent : public UDataDrivenInitializableComponent, public IControllerComponentInterface
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this component's properties
-	UControllerComponent();
+	UDataDrivenControllerComponent();
 
 	virtual void IOnPossesPawn_Implementation(APawn* NewPawn) override;
 	
@@ -26,7 +27,6 @@ public:
 	{
 		return ControlledPawn;
 	}
-	
 protected:
 	UPROPERTY(BlueprintGetter=GetControlledPawn)
 	TObjectPtr<APawn> ControlledPawn = nullptr;

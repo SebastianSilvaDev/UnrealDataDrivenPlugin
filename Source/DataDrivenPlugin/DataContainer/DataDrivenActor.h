@@ -19,6 +19,8 @@ public:
 
 	virtual void BeginPlay() override;
 
+	virtual void PostInitializeComponents() override;
+
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UDataContainerComponent* DataContainerComponent = nullptr;
