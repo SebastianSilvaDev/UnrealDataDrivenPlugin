@@ -11,7 +11,7 @@ UDataContainerComponent::UDataContainerComponent()
 
 void UDataContainerComponent::RegisterDataContainer(UDataContainer* NewDataContainer)
 {
-	verifyf(IsValid(NewDataContainer), TEXT("The Data Container to be registered is not valid"));
+	if (!IsValid(NewDataContainer)) return;
 	DataContainer = NewDataContainer;
 }
 
