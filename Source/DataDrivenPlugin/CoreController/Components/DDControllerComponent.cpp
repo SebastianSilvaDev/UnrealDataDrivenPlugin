@@ -1,22 +1,22 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "ControllerComponent.h"
+#include "DDControllerComponent.h"
 
 
 // Sets default values for this component's properties
-UControllerComponent::UControllerComponent()
+UDDControllerComponent::UDDControllerComponent()
 {
 
 }
 
-void UControllerComponent::IOnPossesPawn_Implementation(APawn* NewPawn)
+void UDDControllerComponent::IOnPossesPawn_Implementation(APawn* NewPawn)
 {
 	IControllerComponentInterface::IOnPossesPawn_Implementation(NewPawn);
 	ControlledPawn = NewPawn;
 }
 
-void UControllerComponent::IOnUnPossesPawn_Implementation()
+void UDDControllerComponent::IOnUnPossesPawn_Implementation()
 {
 	IControllerComponentInterface::IOnUnPossesPawn_Implementation();
 	ControlledPawn = nullptr;

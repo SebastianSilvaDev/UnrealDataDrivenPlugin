@@ -15,10 +15,11 @@ public:
 	// Sets default values for this actor's properties
 	ABasePlayerController();
 
+	virtual void AcknowledgePossession(APawn* P) override;
 protected:
 	virtual void OnPossess(APawn* aPawn) override;
 	
 	virtual void OnUnPossess() override;
-
+	
 	virtual void SetupInputComponent() override;
 };

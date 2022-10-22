@@ -5,17 +5,17 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Interfaces/PawnPossessionInterface.h"
-#include "PawnComponent.generated.h"
+#include "DDPawnComponent.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class DATADRIVENPLUGIN_API UPawnComponent : public UActorComponent, public IPawnPossessionInterface
+class DATADRIVENPLUGIN_API UDDPawnComponent : public UActorComponent, public IPawnPossessionInterface
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this component's properties
-	UPawnComponent();
+	UDDPawnComponent();
 
 	virtual void IOnPossessedBy_Implementation(AController* NewController, AController* OldController) override;
 	

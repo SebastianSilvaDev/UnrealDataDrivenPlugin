@@ -12,6 +12,19 @@ ABasePlayerController::ABasePlayerController()
 	
 }
 
+void ABasePlayerController::AcknowledgePossession(APawn* P)
+{
+	Super::AcknowledgePossession(P);
+	TArray<UActorComponent*> ControllerComponents = GetComponentsByInterface(UControllerComponentInterface::StaticClass());
+	if(!ControllerComponents.IsEmpty())
+	{
+		for (auto& Component : ControllerComponents)
+		{
+			IControllerComponentInterface::Execute_IOnPossesPawn(Component, P);
+		}
+	}
+}
+
 void ABasePlayerController::OnPossess(APawn* aPawn)
 {
 	Super::OnPossess(aPawn);
