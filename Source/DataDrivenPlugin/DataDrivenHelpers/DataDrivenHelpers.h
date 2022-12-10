@@ -28,6 +28,10 @@ public:
 		meta=(ExpandEnumAsExecs=ExecOutput, ComponentClass="ActorComponent", DeterminesOutputType=ComponentClass))
 	static UActorComponent* GetValidatedComponentByClass(AActor* Target, TSubclassOf<UActorComponent> ComponentClass,
 	                                                     TEnumAsByte<EValidationPin>& ExecOutput);
+	UFUNCTION(BlueprintCallable,
+		meta=(ExpandEnumAsExecs=ExecOutput, DeterminesOutputType=InterfaceClass))
+	static UInterface* GetValidatedComponentByInterface(AActor* Target, TSubclassOf<UInterface> InterfaceClass,
+														 TEnumAsByte<EValidationPin>& ExecOutput);
 
 	UFUNCTION(BlueprintCallable,
 		meta=(ExpandEnumAsExecs=ExecOutput, DataPieceClass="Object", DeterminesOutputType=DataPieceClass))

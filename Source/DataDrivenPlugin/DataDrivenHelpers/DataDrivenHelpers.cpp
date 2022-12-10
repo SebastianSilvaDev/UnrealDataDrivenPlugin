@@ -18,8 +18,26 @@ UActorComponent* UDataDrivenHelpers::GetValidatedComponentByClass(AActor* Target
 	return Component;
 }
 
+UInterface* UDataDrivenHelpers::GetValidatedComponentByInterface(AActor* Target,
+	TSubclassOf<UInterface> InterfaceClass, TEnumAsByte<EValidationPin>& ExecOutput)
+{
+	if (!IsValid(Target))
+	{
+		ExecOutput = EValidationPin::Invalid;
+		return nullptr;
+	}
+	TArray<UActorComponent*> ValidComponents = Target->GetComponentsByInterface(InterfaceClass);
+	if (ValidComponents.IsEmpty())
+	{
+		ExecOutput = EValidationPin::Invalid;
+		return nullptr;
+	}
+	ExecOutput = EValidationPin::Valid;
+	return Cast<UInterface>(ValidComponents.Top());
+}
+
 UObject* UDataDrivenHelpers::GetValidatedDataPiece(UDataContainerComponent* Target, TSubclassOf<UObject> DataPieceClass,
-	TEnumAsByte<EValidationPin>& ExecOutput)
+                                                   TEnumAsByte<EValidationPin>& ExecOutput)
 {
 	if (!IsValid(Target))
 	{
