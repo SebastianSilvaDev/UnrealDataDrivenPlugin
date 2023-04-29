@@ -15,23 +15,20 @@ class DATADRIVENPLUGIN_API UDataContainer : public UDataAsset
 	GENERATED_BODY()
 
 public:
-	template<class T>
-	void RegisterDataPiece(FName Name, T*& DataPiece);
-
 	UFUNCTION(BlueprintCallable)
 	UObject* GetDataPiece(TSubclassOf<UObject> DataPieceClass);
 
-	// TODO RegisterDataPiece for Blueprints
+	template<class T>
+	T* GetDataPiece();
 	
-private:
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, meta=(AllowPrivateAccess))
-	TMap<TSubclassOf<UObject>, UObject*> DataPieces;
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Instanced)
+	TArray<UObject*> DataPieces;
 };
 
 template <class T>
-void UDataContainer::RegisterDataPiece(FName Name, T*& DataPiece)
+T* UDataContainer::GetDataPiece()
 {
-	UClass* DataPieceClass = T::StaticClass();
-	DataPiece = static_cast<T*>(CreateDefaultSubobject(Name,DataPieceClass, DataPieceClass, true, false));
-	DataPieces.Add(DataPieceClass, DataPiece);
+	UObject* FoundObject = GetDataPiece(T::StaticClass);
+	return static_cast<T*>(FoundObject);
 }
