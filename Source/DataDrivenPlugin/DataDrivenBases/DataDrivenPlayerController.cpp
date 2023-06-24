@@ -4,7 +4,6 @@
 #include "DataDrivenPlayerController.h"
 
 #include "DataDrivenPlugin/DataContainer/DataContainerComponent.h"
-#include "DataDrivenPlugin/DataContainer/DataDrivenComponentInterface.h"
 #include "DataDrivenPlugin/DataDrivenHelpers/DataDrivenHelpers.h"
 #include "DataDrivenPlugin/Initialization/InitializableInterface.h"
 
@@ -28,5 +27,4 @@ void ADataDrivenPlayerController::BeginPlay()
 void ADataDrivenPlayerController::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	REGISTER_DATA_CONTAINER()
 }

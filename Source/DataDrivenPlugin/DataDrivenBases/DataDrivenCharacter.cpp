@@ -4,7 +4,6 @@
 #include "DataDrivenCharacter.h"
 
 #include "DataDrivenPlugin/DataContainer/DataContainerComponent.h"
-#include "DataDrivenPlugin/DataContainer/DataDrivenComponentInterface.h"
 #include "DataDrivenPlugin/DataDrivenHelpers/DataDrivenHelpers.h"
 #include "DataDrivenPlugin/Initialization/InitializableInterface.h"
 
@@ -25,6 +24,5 @@ void ADataDrivenCharacter::BeginPlay()
 void ADataDrivenCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	REGISTER_DATA_CONTAINER()
 }
 

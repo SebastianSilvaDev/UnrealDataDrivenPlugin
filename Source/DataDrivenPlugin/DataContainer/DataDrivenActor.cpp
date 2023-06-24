@@ -2,8 +2,6 @@
 
 
 #include "DataDrivenActor.h"
-
-#include "DataDrivenComponentInterface.h"
 #include "DataDrivenPlugin/Initialization/InitializableInterface.h"
 #include "DataDrivenPlugin/DataDrivenHelpers/DataDrivenHelpers.h"
 
@@ -17,12 +15,10 @@ ADataDrivenActor::ADataDrivenActor()
 void ADataDrivenActor::BeginPlay()
 {
 	Super::BeginPlay();
-	DataContainerComponent->RegisterDataContainer(DataContainer);
 	INITIALIZE_COMPONENTS(DataContainerComponent)
 }
 
 void ADataDrivenActor::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	REGISTER_DATA_CONTAINER()
 }

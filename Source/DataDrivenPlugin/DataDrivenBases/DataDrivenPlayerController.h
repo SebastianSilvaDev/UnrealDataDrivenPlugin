@@ -24,9 +24,6 @@ protected:
 
 	virtual void PostInitializeComponents() override;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(Category="DataDrivenPlayerController" ,VisibleAnywhere, BlueprintReadOnly)
 	UDataContainerComponent* DataContainerComponent = nullptr;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess))
-	UDataContainer* DataContainer = nullptr;
 };

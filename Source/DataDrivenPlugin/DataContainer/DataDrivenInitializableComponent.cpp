@@ -13,11 +13,3 @@ void UDataDrivenInitializableComponent::IFinishInitialization_Implementation()
 {
 	IInitializableInterface::IFinishInitialization_Implementation();
 }
-
-void UDataDrivenInitializableComponent::IRegisterDataContainerComponent_Implementation(
-	UDataContainerComponent* NewDataContainerComponent)
-{
-	IDataDrivenComponentInterface::IRegisterDataContainerComponent_Implementation(NewDataContainerComponent);
-	DataContainerComponent = NewDataContainerComponent;
-}
-

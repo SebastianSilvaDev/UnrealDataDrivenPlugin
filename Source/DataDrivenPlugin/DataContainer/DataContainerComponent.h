@@ -30,7 +30,7 @@ public:
 		if (!IsValid(DataPiece)) return nullptr;
 		return Cast<T>(DataPiece);
 	}
-	
-	UPROPERTY()
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Data Driven")
 	UDataContainer* DataContainer = nullptr;
 };

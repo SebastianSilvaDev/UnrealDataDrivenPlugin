@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DataDrivenComponentInterface.h"
 #include "Components/ActorComponent.h"
 #include "DataDrivenPlugin/Initialization/InitializableInterface.h"
 #include "DataDrivenInitializableComponent.generated.h"
@@ -11,7 +10,7 @@
 class UDataContainerComponent;
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class DATADRIVENPLUGIN_API UDataDrivenInitializableComponent : public UActorComponent, public IInitializableInterface, public IDataDrivenComponentInterface
+class DATADRIVENPLUGIN_API UDataDrivenInitializableComponent : public UActorComponent, public IInitializableInterface
 {
 	GENERATED_BODY()
 
@@ -20,8 +19,6 @@ public:
 	UDataDrivenInitializableComponent();
 
 	virtual void IFinishInitialization_Implementation() override;
-
-	virtual void IRegisterDataContainerComponent_Implementation(UDataContainerComponent* NewDataContainerComponent) override;
 
 protected:
 	UPROPERTY()
