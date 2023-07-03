@@ -2,10 +2,11 @@
 
 
 #include "DataContainer.h"
+#include "DataPiece.h"
 
-UObject* UDataContainer::GetDataPiece(TSubclassOf<UObject> DataPieceClass)
+UDataPiece* UDataContainer::GetDataPiece(TSubclassOf<UDataPiece> DataPieceClass)
 {
-	UObject* DataPiece = nullptr;
+	UDataPiece* DataPiece = nullptr;
 	for (const auto& InternalDataPiece : DataPieces)
 	{
 		if (!IsValid(InternalDataPiece)) continue;

@@ -15,7 +15,7 @@ void UDataContainerComponent::RegisterDataContainer(UDataContainer* NewDataConta
 	DataContainer = NewDataContainer;
 }
 
-UObject* UDataContainerComponent::GetDataPiece(TSubclassOf<UObject> DataPieceClass)
+UDataPiece* UDataContainerComponent::GetDataPiece(TSubclassOf<UDataPiece> DataPieceClass)
 {
 	if(!IsValid(DataContainer)) return nullptr;
 	return DataContainer->GetDataPiece(DataPieceClass);

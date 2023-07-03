@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DataContainerComponent.h"
 #include "Components/ActorComponent.h"
 #include "DataDrivenPlugin/Initialization/InitializableInterface.h"
 #include "DataDrivenInitializableComponent.generated.h"
@@ -19,8 +20,20 @@ public:
 	UDataDrivenInitializableComponent();
 
 	virtual void IFinishInitialization_Implementation() override;
-
+	
 protected:
+
+	template<class T>
+	T* FindDataPiece()
+	{
+		if (!IsValid(DataContainerComponent))
+		{
+			DataContainerComponent = GetOwner()->FindComponentByClass<UDataContainerComponent>();
+		}
+		ensure(IsValid(DataContainerComponent));
+		return DataContainerComponent->GetDataPiece<T>();	
+	}
+	
 	UPROPERTY()
 	UDataContainerComponent* DataContainerComponent = nullptr;
 	

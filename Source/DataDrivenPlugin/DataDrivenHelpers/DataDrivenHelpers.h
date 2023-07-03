@@ -6,6 +6,7 @@
 #include "UObject/Object.h"
 #include "DataDrivenHelpers.generated.h"
 
+class UDataPiece;
 class UDataContainerComponent;
 
 UENUM()
@@ -35,7 +36,7 @@ public:
 
 	UFUNCTION(BlueprintCallable,
 		meta=(ExpandEnumAsExecs=ExecOutput, DataPieceClass="Object", DeterminesOutputType=DataPieceClass))
-	static UObject* GetValidatedDataPiece(UDataContainerComponent* Target, TSubclassOf<UObject> DataPieceClass,
+	static UObject* GetValidatedDataPiece(UDataContainerComponent* Target, TSubclassOf<UDataPiece> DataPieceClass,
 	                                      TEnumAsByte<EValidationPin>& ExecOutput);
 };
 

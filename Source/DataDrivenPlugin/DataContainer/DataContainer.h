@@ -7,6 +7,7 @@
 #include "UObject/Object.h"
 #include "DataContainer.generated.h"
 
+class UDataPiece;
 /**
  * 
  */
@@ -17,19 +18,19 @@ class DATADRIVENPLUGIN_API UDataContainer : public UDataAsset
 
 public:
 	UFUNCTION(BlueprintCallable)
-	UObject* GetDataPiece(TSubclassOf<UObject> DataPieceClass);
+	UDataPiece* GetDataPiece(TSubclassOf<UDataPiece> DataPieceClass);
 
 	template<class T>
 	T* GetDataPiece();
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Instanced)
-	TArray<UObject*> DataPieces;
+	TArray<UDataPiece*> DataPieces;
 };
 
 template <class T>
 T* UDataContainer::GetDataPiece()
 {
-	UObject* FoundObject = GetDataPiece(T::StaticClass);
+	UDataPiece* FoundObject = GetDataPiece(T::StaticClass());
 	return static_cast<T*>(FoundObject);
 }

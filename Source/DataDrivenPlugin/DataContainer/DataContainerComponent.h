@@ -5,8 +5,9 @@
 #include "CoreMinimal.h"
 #include "DataContainer.h"
 #include "Components/ActorComponent.h"
-#include "DataDrivenPlugin/DataDrivenHelpers/DataDrivenHelpers.h"
+#include "DataDrivenPlugin/DataContainer/DataPiece.h"
 #include "DataContainerComponent.generated.h"
+
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class DATADRIVENPLUGIN_API UDataContainerComponent : public UActorComponent
@@ -19,14 +20,15 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RegisterDataContainer(UDataContainer* NewDataContainer);
-	
-	UObject* GetDataPiece(TSubclassOf<UObject> DataPieceClass);
+
+	UFUNCTION(BlueprintCallable)
+	UDataPiece* GetDataPiece(TSubclassOf<UDataPiece> DataPieceClass);
 
 	template<class T>
 	T* GetDataPiece()
 	{
 		if(!DataContainer) return nullptr;
-		UObject* DataPiece = DataContainer->GetDataPiece(T::StaticClass());
+		UDataPiece* DataPiece = DataContainer->GetDataPiece(T::StaticClass());
 		if (!IsValid(DataPiece)) return nullptr;
 		return Cast<T>(DataPiece);
 	}

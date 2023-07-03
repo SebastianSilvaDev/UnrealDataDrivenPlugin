@@ -2,7 +2,7 @@
 
 
 #include "DataDrivenHelpers.h"
-
+#include "DataDrivenPlugin/DataContainer/DataPiece.h"
 #include "DataDrivenPlugin/DataContainer/DataContainerComponent.h"
 
 UActorComponent* UDataDrivenHelpers::GetValidatedComponentByClass(AActor* Target,
@@ -36,7 +36,7 @@ UInterface* UDataDrivenHelpers::GetValidatedComponentByInterface(AActor* Target,
 	return Cast<UInterface>(ValidComponents.Top());
 }
 
-UObject* UDataDrivenHelpers::GetValidatedDataPiece(UDataContainerComponent* Target, TSubclassOf<UObject> DataPieceClass,
+UObject* UDataDrivenHelpers::GetValidatedDataPiece(UDataContainerComponent* Target, TSubclassOf<UDataPiece> DataPieceClass,
                                                    TEnumAsByte<EValidationPin>& ExecOutput)
 {
 	if (!IsValid(Target))
