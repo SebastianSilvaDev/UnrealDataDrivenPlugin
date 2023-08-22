@@ -21,7 +21,7 @@ ADataDrivenPlayerController::ADataDrivenPlayerController()
 void ADataDrivenPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	INITIALIZE_COMPONENTS(DataContainerComponent)
+	INITIALIZE_COMPONENTS
 }
 
 void ADataDrivenPlayerController::PostInitializeComponents()

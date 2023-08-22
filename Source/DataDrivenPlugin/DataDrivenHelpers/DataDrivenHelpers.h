@@ -40,7 +40,7 @@ public:
 	                                      TEnumAsByte<EValidationPin>& ExecOutput);
 };
 
-#define INITIALIZE_COMPONENTS(DataContainerComponent) \
+#define INITIALIZE_COMPONENTS \
 	TArray<UActorComponent*> InitializableComponents = GetComponentsByInterface(UInitializableInterface::StaticClass()); \
 	for (auto& Component : InitializableComponents) \
 	{ \

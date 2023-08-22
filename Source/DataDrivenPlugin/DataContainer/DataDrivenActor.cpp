@@ -15,7 +15,7 @@ ADataDrivenActor::ADataDrivenActor()
 void ADataDrivenActor::BeginPlay()
 {
 	Super::BeginPlay();
-	INITIALIZE_COMPONENTS(DataContainerComponent)
+	INITIALIZE_COMPONENTS
 }
 
 void ADataDrivenActor::PostInitializeComponents()

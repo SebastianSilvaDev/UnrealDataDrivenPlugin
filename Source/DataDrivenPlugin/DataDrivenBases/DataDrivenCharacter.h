@@ -25,9 +25,6 @@ protected:
 
 	virtual void PostInitializeComponents() override;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	UDataContainerComponent* DataContainerComponent = nullptr;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess))
-	UDataContainer* DataContainer = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="DataDrivenCharacter")
+	UDataContainerComponent* DataContainerComponent;
 };

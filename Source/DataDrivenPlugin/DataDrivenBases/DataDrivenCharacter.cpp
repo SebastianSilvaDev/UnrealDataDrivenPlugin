@@ -11,14 +11,15 @@
 // Sets default values
 ADataDrivenCharacter::ADataDrivenCharacter()
 {
+	PrimaryActorTick.bCanEverTick = true;
+	DataContainerComponent = CreateDefaultSubobject<UDataContainerComponent>(TEXT("DataContainerComponent"));
 }
 
 // Called when the game starts or when spawned
 void ADataDrivenCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	DataContainerComponent->RegisterDataContainer(DataContainer);
-	INITIALIZE_COMPONENTS(DataContainerComponent)
+	INITIALIZE_COMPONENTS
 }
 
 void ADataDrivenCharacter::PostInitializeComponents()

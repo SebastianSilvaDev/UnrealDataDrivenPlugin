@@ -6,7 +6,7 @@
 // Sets default values for this component's properties
 UDataContainerComponent::UDataContainerComponent()
 {
-	
+	PrimaryComponentTick.bStartWithTickEnabled = false;
 }
 
 void UDataContainerComponent::RegisterDataContainer(UDataContainer* NewDataContainer)

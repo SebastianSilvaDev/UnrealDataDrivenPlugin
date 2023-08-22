@@ -6,11 +6,12 @@
 
 UDataPiece* UDataContainer::GetDataPiece(TSubclassOf<UDataPiece> DataPieceClass)
 {
-	UDataPiece* DataPiece = nullptr;
 	for (const auto& InternalDataPiece : DataPieces)
 	{
-		if (!IsValid(InternalDataPiece)) continue;
-		if (InternalDataPiece->GetClass()->IsChildOf(DataPieceClass)) return InternalDataPiece;
+		if (IsValid(InternalDataPiece) && InternalDataPiece->GetClass()->IsChildOf(DataPieceClass))
+		{
+			return InternalDataPiece;
+		}
 	}
-	return DataPiece;
+	return nullptr;
 }
