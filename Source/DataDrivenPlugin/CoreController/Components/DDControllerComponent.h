@@ -26,6 +26,16 @@ public:
 	{
 		return ControlledPawn;
 	}
+
+	UFUNCTION(BlueprintGetter)
+	FORCEINLINE AController* GetOwnerController() const
+	{
+		if (ControlledPawn == nullptr)
+		{
+			return GetOwner<AController>();
+		}
+		return ControlledPawn->GetController();
+	}
 	
 protected:
 	UPROPERTY(BlueprintGetter=GetControlledPawn)
